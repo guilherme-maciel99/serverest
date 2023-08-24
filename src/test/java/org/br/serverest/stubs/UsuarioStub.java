@@ -7,12 +7,16 @@ import java.util.UUID;
 public class UsuarioStub {
 
     private String idUsuario;
-    String email = gerarEmailUnico();
+    private String nome;
+    private String email;
+    private String password;
+    private String administrador;
+    String gerar = gerarEmailUnico();
 
     public Usuario stubUsuario(){
         Usuario user = new Usuario(
                 "Guilherme Maciel",
-                email,
+                gerar,
                 "testesenha",
                 "true");
         return user;
@@ -22,6 +26,14 @@ public class UsuarioStub {
                 "Guilherme Maciel",
                 "gui.almaciel@gmail.com",
                 "testesenha",
+                "true");
+        return user;
+    }
+    public Usuario stubUsuarioPut(){
+        Usuario user = new Usuario(
+                "Guilherme Maciel",
+                gerar,
+                "novasenha",
                 "true");
         return user;
     }
@@ -38,4 +50,35 @@ public class UsuarioStub {
         return this.idUsuario;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(String administrador) {
+        this.administrador = administrador;
+    }
 }
