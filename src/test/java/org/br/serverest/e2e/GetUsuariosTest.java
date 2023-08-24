@@ -1,24 +1,27 @@
 package org.br.serverest.e2e;
 
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.br.serverest.model.Usuario;
+import org.br.serverest.stubs.UsuarioStub;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class GetUsuariosTest {
 
-    private final String url = "https://serverest.dev";
-
+    private static final String url = "https://serverest.dev";
+    private UsuarioStub usuarioStub;
 
     @BeforeEach
-    void init(){
+    void setup(){
         RestAssured.baseURI = url;
+        usuarioStub = new UsuarioStub();
     }
 
     @Test
@@ -34,6 +37,7 @@ public class GetUsuariosTest {
 
         assertFalse(email.isEmpty());
         assertFalse(password.isEmpty());
+
     }
 
     @Test
@@ -45,5 +49,27 @@ public class GetUsuariosTest {
                 .get("/usuarios/endpoint-inexistente"); // Endpoint inválido
 
         assertEquals(400, response.getStatusCode()); // Verificar código de erro esperado
+    }
+
+    @Test
+    @DisplayName("GET - Deve buscar um usuário por ID")
+    void testBuscarUsuarioPorId() {
+        Usuario novoUsuario = usuarioStub.stubUsuario();
+
+        Response responsePost = given()
+                .baseUri(url)
+                .contentType(ContentType.JSON)
+                .body(novoUsuario)
+                .when()
+                .post("/usuarios");
+
+
+        String idUsuario = responsePost.jsonPath().getString("_id");
+
+        Response response = given()
+                .when()
+                .get("/usuarios/" + idUsuario);
+        assertEquals(200, response.getStatusCode());
+
     }
 }
