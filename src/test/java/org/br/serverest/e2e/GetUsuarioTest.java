@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class GetUsuariosTest {
+public class GetUsuarioTest {
 
     private static final String url = "https://serverest.dev";
     private UsuarioStub usuarioStub;
@@ -71,5 +71,12 @@ public class GetUsuariosTest {
                 .get("/usuarios/" + idUsuario);
         assertEquals(200, response.getStatusCode());
 
+        String email = response.jsonPath().getString("email");
+        String senha = response.jsonPath().getString("password");
+        String id = response.jsonPath().getString("_id");
+
+        assertEquals(novoUsuario.getEmail(), email);
+        assertEquals(novoUsuario.getPassword(), senha);
+        assertEquals(idUsuario, id);
     }
 }
