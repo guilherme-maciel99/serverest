@@ -22,30 +22,30 @@ Os testes automatizados abrangem os seguintes cenários:
 
 ## Teste de Listagem de Usuários
 
-Verifica se a listagem de usuários é retornada corretamente.
+- Verifica se a listagem de usuários é retornada corretamente.
 
-Verifica se os campos importantes (nome, email, senha) estão presentes e não vazios.
+- Verifica se os campos importantes (nome, email, senha) estão presentes e não vazios.
 
 ## Teste de Cadastro de Novo Usuário
 
-Verifica se um novo usuário é cadastrado com sucesso.
+- Verifica se um novo usuário é cadastrado com sucesso.
 
-Verifica se a mensagem de sucesso é retornada na resposta.
+- Verifica se a mensagem de sucesso é retornada na resposta.
 
-Verifica se não é permitido cadastrar um usuário com email já utilizado.
+- Verifica se não é permitido cadastrar um usuário com email já utilizado.
 
 ## Teste de Edição ou Cadastro de Usuário Existente
 
-Verifica se um usuário existente pode ser editado com sucesso.
+- Verifica se um usuário existente pode ser editado com sucesso.
 
-Verifica se a mensagem de sucesso é retornada na resposta.
+- Verifica se a mensagem de sucesso é retornada na resposta.
 
-Caso o usuário não exista, verifica se um novo usuário é cadastrado com sucesso.
+- Caso o usuário não exista, verifica se um novo usuário é cadastrado com sucesso.
 
-Caso seja um novo cadastro, verifica se a mensagem de sucesso é retornada na resposta.
+- Caso seja um novo cadastro, verifica se a mensagem de sucesso é retornada na resposta.
 
 ## Teste de Exclusão de Usuário
 
-Verifica se um usuário existente pode ser excluído com sucesso.
+- Verifica se um usuário existente pode ser excluído com sucesso.
 
-Verifica se a mensagem de sucesso é retornada na resposta.
+- Verifica se a mensagem de sucesso é retornada na resposta.
