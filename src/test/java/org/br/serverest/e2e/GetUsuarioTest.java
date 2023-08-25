@@ -26,7 +26,7 @@ public class GetUsuarioTest {
 
     @Test
     @DisplayName("GET - Deve retornar uma lista contendo os usuários")
-    void getUsuarios(){
+    void testRetornarUsuarios(){
         Response response = given()
                 .when()
                 .get("/usuarios");

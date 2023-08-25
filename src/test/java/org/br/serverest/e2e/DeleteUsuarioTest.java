@@ -24,8 +24,8 @@ public class DeleteUsuarioTest {
         }
 
         @Test
-        @DisplayName("DELETE - Deve excluir um usuário existente")
-        void testExcluirUsuario() {
+        @DisplayName("DELETE - Deve deletar um usuário existente")
+        void testDeletarUsuario() {
             Usuario novoUsuario = usuarioStub.stubUsuario();
             Response responsePost = given()
                     .baseUri(url)
@@ -45,7 +45,6 @@ public class DeleteUsuarioTest {
 
             assertEquals(200, responseDelete.getStatusCode());
             assertTrue(responseDelete.getBody().asString().contains("Registro excluído com sucesso"));
-
 
         }
 
